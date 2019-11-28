@@ -1,3 +1,9 @@
+/*
+Entry Management Software
+Author: Shashwat Srivastava
+Thu Nov 28 | 16:45
+*/
+
 const express=require('express');
 const bodyParser=require('body-parser');
 const app=express();
