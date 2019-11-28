@@ -6,6 +6,7 @@ A basic Entry Management Software used to schedule a meeting between a visitor a
 * NodeJS and Express along with BodyParser, NodeMailer, NexMo and Node-Cron have been used in development.
 * The root path of the app is ```/ems``` (```localhost:3000/ems/```) where form for filling in visitor's and host's details is displayed.
 * The form submits to ```/ems/submit``` (POST request) where the SMS and e-mails are sent/scheduled. Then, user is redirected to```/ems/success``` where simply a success message is displayed.
+* In the current version, database connectivity has not been done (keeping the time constraint in mind). It could be implemented in a future version.
 
 # Folder Organisation
 * ```app.js``` is the entry point of the app, which renders ```index.ejs```.
