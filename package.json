@@ -1,0 +1,20 @@
+{
+  "name": "ems",
+  "version": "1.0.0",
+  "description": "An Entry Management System model",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shashwat Srivastava",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "nexmo": "^2.5.1",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.3.1"
+  }
+}

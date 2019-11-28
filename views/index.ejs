@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>EMS | Entry Management System</title>
+
+        <!--Google Fonts API-->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Alegreya|B612|Sail"/>
+
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
+
+        <!--Latest compiled and minified CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!--jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!--Popper JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+        <!--Latest compiled JavaScript-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!--Custom stylesheet-->
+        <link rel="stylesheet" type="text/css" href="/styles/index.css"/>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">EMS &copy;</a>
+        </nav>
+
+        <!--'wrap' is used to adjust footer position-->
+        <div id="wrap">
+        <!--'bg' is used for setting background colour-->
+        <div id="bg">
+        <div class="container">
+            <div class="row">
+            <form id="emsForm" method="POST" action="/ems/submit" onsubmit="return checkTime()">
+                <div id="vForm" class="col-md-6" style="float:left;">
+                    <h2>Visitor's Details</h2>
+                    <br/>
+                    <!--name,email,phone,checkin,checkout-->
+                    <div class="form-group">
+                        <label for="vName">Name</label>
+                        <input type="text" class="form-control" id="vName" name="vName" placeholder="Name of Visitor" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="vEmail">Email Address</label>
+                        <input type="email" class="form-control" id="vEmail" name="vEmail" placeholder="Email Address of Visitor" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="vPhone">Phone</label>
+                        <input type="text" class="form-control" id="vPhone" name="vPhone" placeholder="Contact number of Visitor" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="vCI">Check-In Time</label>
+                        <input type="time" class="form-control" id="vCI" name="vCI"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="vCO">Check-Out Time</label>
+                        <input type="time" class="form-control" id="vCO" name="vCO"/>
+                    </div>
+                </div>
+                <div id="hForm" class="col-md-6" style="float:left;">
+                    <h2>Host's Details</h2>
+                    <br/>
+                    <!--name,email,phone,address-->
+                    <div class="form-group">
+                        <label for="hName">Name</label>
+                        <input type="text" class="form-control" id="hName" name="hName" placeholder="Name of Host" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="hEmail">Email Address</label>
+                        <input type="email" class="form-control" id="hEmail" name="hEmail" placeholder="Email Address of Host" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="hPhone">Phone</label>
+                        <input type="text" class="form-control" id="hPhone" name="hPhone" placeholder="Contact number of Host" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="hAddress">Address</label>
+                        <textarea class="form-control" id="hAddress" name="hAddress" placeholder="Address of meeting" required="required"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-block btn-outline-primary" type="submit" id="submit">Schedule the Meeting&nbsp;&nbsp;<i class="fa fa-paper-plane"></i></button>
+            </form>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <footer id="foot">
+            <p style="margin-top:10px;font-style:italic;"><strong>EMS &copy; 2019&nbsp;|&nbsp;WRITE TO US: <a href="mailto:shashwatsr2712@gmail.com">shashwatsr2712@gmail.com</a></strong></p>
+            <a href="https://github.com/shashwatsr2712/" target="_blank" class="awesome fab fa-github" style="font-size:40px;color:black;text-decoration:none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://www.linkedin.com/in/shashwatsr2712" target="_blank" class="awesome fab fa-linkedin" style="color:white;text-decoration:none;"></a>&nbsp;
+        </footer>
+        
+        <script>
+            //Adjusting footer position
+            let h = $('#foot').height();
+            let wrappingHeight=$(window).height()-h;
+            $('#wrap').css("min-height",wrappingHeight);
+
+            //Validate Check-In and Check-Out Time
+            function checkTime(){
+                let elem1=document.getElementById("vCI").value;
+                let elem2=document.getElementById("vCO").value;
+
+                if(elem1==""||elem2==""){
+                    alert("Please Enter the Time");
+                    return false;  
+                } else{
+                    // get system local time
+                    let d = new Date();
+                    let m=d.getMinutes();
+                    if(m<=9) {m='0'+m;}
+                    let h=d.getHours();
+                    if(h=='0') {h=24;}
+                    let currentTime=h+"."+m;
+                    console.log(currentTime);
+                    
+                    //get input time
+                    let time1=elem1.split(":");
+                    let hour1=time1[0];
+                    if(hour1=='00') {hour1=24;}
+                    let min1=time1[1];
+                    let inputTime1=hour1+"."+min1;
+                    console.log(inputTime1);
+                    let time2=elem2.split(":");
+                    let hour2=time2[0];
+                    if(hour2=='00') {hour2=24;}
+                    let min2=time2[1];
+                    let inputTime2=hour2+"."+min2;
+                   
+                    let diff1=inputTime1-currentTime;
+                    let diff2=inputTime2-inputTime1;
+                    console.log(diff1+" "+diff2);
+
+                    //Check in time must be greater than system time and checkout time must be greater than check in time
+                    if (diff1<0||diff2<=0){
+                        alert("Check-In/Check-Out Details Invalid");
+                        return false;
+                    } 
+                    else {
+                        return true;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

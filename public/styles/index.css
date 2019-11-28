@@ -1,0 +1,78 @@
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+    margin:0;
+    font-family:'Alegreya','B612',courier,arial,helvetica;
+}
+
+#bg{
+    background:linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,.8)), url("https://previews.123rf.com/images/vska/vska1512/vska151200028/49065729-abstract-background-futuristic-technology-style-elegant-background-for-business-tech-presentations-.jpg");
+    height:100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+#emsForm{
+    margin-top:20px;
+    margin-bottom:50px;
+}
+
+/* For device sizes greater than that of medium devices (768px) */
+@media screen and (min-width:768px){
+    #vForm{
+        padding-right:2vw;
+        border-right:thick dashed rgb(0,0,139);
+    }
+    #hForm{
+        padding-left:5vw;
+    }
+}
+
+/* For device sizes lesser than that of medium devices (768px) */
+@media screen and (max-width:767px){
+    #vForm{
+        padding-bottom:5vh;
+        border-bottom:thin dashed rgb(0,0,139);
+    }
+    #hForm{
+        padding-top:5vh;
+    }
+}
+
+/* Style all font awesome icons */
+.awesome {
+    padding: 10px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius:50%;
+}
+
+/* Hover effect */
+.fab:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+.fa-twitter {
+    background: #55ACEE;
+}
+.fa-google {
+    background: #dd4b39;
+}
+.fa-linkedin {
+    background: #007bb5;
+}
+
+/* Footer styling */
+#foot {
+    text-align: center;
+    width: 100%;
+    padding: 5px 0px 10px 0px;
+    background-color: #D8D7CD;
+}
