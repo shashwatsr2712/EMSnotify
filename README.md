@@ -11,7 +11,7 @@ A basic Entry Management Software used to schedule a meeting between a visitor a
 # Folder Organisation
 * ```app.js``` is the entry point of the app, which renders ```index.ejs```.
 * All ```.ejs``` files are present in ```views``` directory.
-* Custom stylesheet is present in ```public/views``` directory.
+* Custom stylesheet is present in ```public/styles``` directory.
 
 # Points to Note
 * For sending instant e-mail to host, e-mail address of the sender(company) should be put in place of ```<COMPANY_EMAIL_ADDRESS>``` for NodeMailer.
